@@ -10,7 +10,7 @@ const ItemsInventory = () => {
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center'>
                 {
                     items.slice(0, 6).map((item) => (
-                        <ItemInventory key={item.id} item={item}>
+                        <ItemInventory key={item._id} item={item}>
                         </ItemInventory>)
                     )
                 }
