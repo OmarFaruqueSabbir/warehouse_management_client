@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import useItemDetail from '../../../hooks/useItemDetail';
 
 const ItemDetail = () => {
     const { itemId } = useParams();
-    const [item] = useItemDetail(itemId)
+    const [item, setItem] = useState({});
+
+    useEffect( () =>{
+        const url = `http://localhost:5000/item/${itemId}`;
+        console.log(url);
+        fetch(url)
+        .then(res=> res.json())
+        .then(data => setItem(data));
+        
+    }, [item]);
 
     const handleIncrement = event => {
         event.preventDefault();
-        const quantity1 = parseFloat(item.quantity) + parseFloat(event.target.item.value);
+        const quantity = parseFloat(item.quantity) + parseFloat(event.target.item.value);
 
-        const updatedQuantity = { quantity1 }
+        const updatedQuantity = { quantity }
 
         // send update data to the server..
         const url = `http://localhost:5000/item/${itemId}`
@@ -29,6 +37,29 @@ const ItemDetail = () => {
             })
     }
 
+    const handleDecrement = () => {
+        const quantity = parseFloat(item.quantity) -1;
+
+        const updatedQuantity = { quantity }
+
+        // send update data to the server..
+        const url = `http://localhost:5000/item/${itemId}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedQuantity)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data);
+                alert('Item Delivered!');
+            })
+    }
+
+
+
     return (
         <div className='text-center'>
             <div className="flex max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 mt-10">
@@ -45,7 +76,7 @@ const ItemDetail = () => {
 
                     <div className="flex justify-between mt-3 item-center">
                         <h1 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{item.price}$</h1>
-                        <button className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Delivered</button>
+                        <button onClick={handleDecrement} className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Delivered</button>
                     </div>
                 </div>
             </div>

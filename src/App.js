@@ -6,6 +6,7 @@ import ItemDetail from './components/Home/ItemDetail/ItemDetail';
 import ManageInventory from './components/Home/ManageInventory/ManageInventory';
 import LogIn from './LogIn/LogIn/LogIn';
 import Register from './LogIn/Register/Register';
+import AddItems from './components/AddItems/AddItems';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/manageInventory' element={<ManageInventory />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/addItems' element={<AddItems />} />
       </Routes>
     </div>
   );
