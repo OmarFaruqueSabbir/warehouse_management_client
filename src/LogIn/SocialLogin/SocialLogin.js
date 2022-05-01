@@ -25,8 +25,8 @@ const SocialLogin = () => {
                 errorElement
             }
             <button onClick={() => signInWithGoogle()} type="button" className="flex items-center justify-center h-12 px-6 w-full bg-indigo-600 mt-2 rounded font-semibold text-sm text-blue-100 hover:bg-indigo-700">
-                <FcGoogle style={{height:'30px'}} />
-                <span className='ps-2'>Google Sign In</span> 
+                <FcGoogle style={{height:'50px'}} />
+                <span className='pl-2 text-base'>Google Sign In</span> 
             </button>
         </>
     );
