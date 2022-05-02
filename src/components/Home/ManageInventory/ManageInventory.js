@@ -54,7 +54,7 @@ const ManageInventory = () => {
                                             <td className="px-9 py-4 ">
                                                 {item.name}
                                             </td>
-                                            <td className="px-6 py-4  h-20 w-20">
+                                            <td className=" px-6 py-4  h-20 w-20">
                                                 <img src={item.img} alt="" />
                                             </td>
                                             <td onClick={() => deleteItem(item._id)} className="px-6 py-4 text-right">
