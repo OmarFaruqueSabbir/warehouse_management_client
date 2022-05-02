@@ -4,47 +4,65 @@ import { useItems } from '../../../hooks/useItems';
 import './ManageInventory.css'
 
 const ManageInventory = () => {
-    const [items,setItems] = useItems([])
-    const deleteItem = id =>{
+    const [items, setItems] = useItems([])
+    const deleteItem = id => {
         const agree = window.confirm('Want to delete Items?');
-        if(agree){
+        if (agree) {
             const url = `http://localhost:5000/item/${id}`
-            fetch(url,{
+            fetch(url, {
                 method: 'DELETE'
             })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                const remaining = items.filter(item => item._id !== id);
-                setItems(remaining);
-            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    const remaining = items.filter(item => item._id !== id);
+                    setItems(remaining);
+                })
         }
     }
     return (
         <div>
             <h3 className='text-3xl mt-5 mb-5'>All Inventory Items</h3>
             <div>
-                <section className="flex items-center justify-center">
-                    <div className="container">
-                        <table className="w-full flex flex-row sm:flex-col lg:flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
-                            <thead className="text-white">
-                                <tr className="bg-gray-700 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                                    <th className="p-3 text-center">Id</th>
-                                    <th className="p-3 text-center">Name</th>
-                                    <th className="h-image p-3 text-center">Image</th>
-                                    <th className="p-3 text-center" width="110px">Actions</th>
+                <section className="md:w-62  container mx-auto mt-8">
+                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table className="md:w-1/2 sm:w-2/4 text-sm  text-gray-500 dark:text-gray-400">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr className='text-center'>
+                                    <th scope="col" className="px-2 py-3 text-base">
+                                        Id
+                                    </th>
+                                    <th scope="col" className="px-2 py-3 text-base">
+                                        Model
+                                    </th>
+                                    <th scope="col" className="px-2 py-3 text-base">
+                                        Image
+                                    </th>
+                                    <th scope="col" className="px-2 py-3 text-base">
+                                        Action
+                                    </th>
                                 </tr>
                             </thead>
                             {
                                 items.map(item => (
                                     <tbody className="flex-1 sm:flex-none">
-                                    <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                                        <td className="border-grey-light border hover:bg-gray-100 p-3">{item._id}</td>
-                                        <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">{item.name}</td>
-                                        <td className="image border-grey-light border hover:bg-gray-100 p-3 truncate h-20 w-20"> <img className='' src={item.img} alt="" /> </td>
-                                        <td onClick={() => deleteItem(item._id)} className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">Delete</td>
-                                    </tr>
-                                </tbody>)
+
+                                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                                {item._id}
+                                            </td>
+                                            <td className="px-9 py-4 ">
+                                                {item.name}
+                                            </td>
+                                            <td className="px-6 py-4  h-20 w-20">
+                                                <img src={item.img} alt="" />
+                                            </td>
+                                            <td onClick={() => deleteItem(item._id)} className="px-6 py-4 text-right">
+                                                <p href="#" className="font-medium text-red-500 dark:text-red-600 hover:underline">Delete</p>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>)
                                 )
                             }
                         </table>
