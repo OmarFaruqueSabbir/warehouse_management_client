@@ -26,7 +26,7 @@ const ManageInventory = () => {
             <div>
                 <section className="flex items-center justify-center">
                     <div className="container">
-                        <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+                        <table className="w-full flex flex-row sm:flex-col lg:flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
                             <thead className="text-white">
                                 <tr className="bg-gray-700 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                                     <th className="p-3 text-center">Id</th>
@@ -50,13 +50,6 @@ const ManageInventory = () => {
                         </table>
                     </div>
                 </section>
-                {/* {
-                    items.map(item => (
-                        <ManageInventoryItems key={item._id} item={item}>
-                        </ManageInventoryItems>)
-                    )
-                } */}
-
                 <div className='flex justify-center my-10'>
                     <Link to="/addItems">
                         <button className="flex items-center px-6 py-2  transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">

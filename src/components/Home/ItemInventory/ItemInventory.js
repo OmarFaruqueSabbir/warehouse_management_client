@@ -22,7 +22,7 @@ const ItemInventory = ({ item }) => {
                     </div>
                     <div className=' flex flex-col justify-end'>
                         {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY: Microwave Oven</h3> */}
-                        <p className="text-gray-900 text-sm text-orange-500 text-justify font-medium"> <strong>Model : </strong>{name}</p>
+                        <p className="text-sm text-orange-500 text-justify font-medium"> <strong>Model : </strong>{name}</p>
                         <p className="text-gray-900 text-sm text-justify font-medium"> <strong>Specs: </strong>{description}</p>
                         <p className="mt-1 text-sm text-left underline-offset-1">Supplier: {supplier}</p>
                         <p className="mt-1 text-base"> <strong>Price : </strong>{price}$</p>
