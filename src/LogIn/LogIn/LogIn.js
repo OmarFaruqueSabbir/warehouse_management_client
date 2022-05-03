@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -20,11 +21,8 @@ const LogIn = () => {
         navigate('/register');
     }
 
-    useEffect(() => {
-        if (user) {
-            navigate(from);
-        }
-    }, [user]);
+
+
 
 
     let errorMessage;
@@ -35,12 +33,17 @@ const LogIn = () => {
             </p>
     }
 
-    const handleLogIn = event => {
+    const handleLogIn = async event => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        signInWithEmailAndPassword(email, password);
+       await signInWithEmailAndPassword(email, password);
+
+       const {data} = await axios.post('http://localhost:5000/login',{email})
+       localStorage.setItem('accessToken',data.accessToken);
+
+       navigate(from,{replace:true})
 
     }
 

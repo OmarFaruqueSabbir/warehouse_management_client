@@ -5,13 +5,15 @@ import auth from '../../firebase.init';
 const MyItems = () => {
     const [user] = useAuthState(auth);
     const [items, setItems] = useState([])
-    const email = user?.email
-    useEffect(() => {
-        const url = `http://localhost:5000/item?email=${email}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [items])
+    
+        
+        useEffect(() => {
+            const email = user?.email
+            const url = `http://localhost:5000/item?email=${email}`;
+            fetch(url)
+                .then(res => res.json())
+                .then(data => setItems(data))
+        }, [user])
 
     const deleteItem = id =>{
         const agree = window.confirm('Want to delete Items?');
