@@ -1,11 +1,16 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import React, { useEffect, useRef } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const LogIn = () => {
+    const emailRef = useRef("");
+    const passRef = useRef("");
 
     const [
         signInWithEmailAndPassword,
@@ -13,6 +18,8 @@ const LogIn = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(
+        auth);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,10 +27,6 @@ const LogIn = () => {
     const gotoRegister = () => {
         navigate('/register');
     }
-
-
-
-
 
     let errorMessage;
 
@@ -35,8 +38,8 @@ const LogIn = () => {
 
     const handleLogIn = async event => {
         event.preventDefault();
-        const email = event.target.email.value;
-        const password = event.target.password.value;
+        const email = emailRef.current.value;
+        const password = passRef.current.value;
 
        await signInWithEmailAndPassword(email, password);
 
@@ -47,8 +50,19 @@ const LogIn = () => {
 
     }
 
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        console.log(email)
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Email sent for reset');
+        } else {
+            toast('please enter your mail');
+        }
+    }
+
     return (
-        <div>
+
             <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                 <div className="max-w-lg mx-auto">
                     <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">Welcome, Log In Here...   </h1>
@@ -60,9 +74,10 @@ const LogIn = () => {
                             <label for="email" className="text-sm text-left font-medium">Email</label>
 
                             <div className="relative mt-1">
-                                <input
+                                <input ref={emailRef}
                                     type="email"
                                     id="email"
+                                    name='email'
                                     className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                                     placeholder="Enter email"
                                 />
@@ -90,9 +105,10 @@ const LogIn = () => {
                             <label for="password" className="text-sm font-medium">Password</label>
 
                             <div className="relative mt-1">
-                                <input
+                                <input ref={passRef}
                                     type="password"
                                     id="password"
+                                    name='password'
                                     className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                                     placeholder="Enter password"
                                 />
@@ -132,6 +148,9 @@ const LogIn = () => {
                         {
                             errorMessage
                         }
+                        <p className="text-gray-400 hover:text-blue-500" >Forgot Password? <span onClick={resetPassword} className='text-primary pl-2'>
+                            Reset your Password</span>  </p>
+                            <ToastContainer />
                         <SocialLogin />
                     </form>
 
@@ -139,9 +158,6 @@ const LogIn = () => {
 
 
             </div>
-
-
-        </div>
     );
 };
 
