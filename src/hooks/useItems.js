@@ -1,14 +1,14 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useItems = () => {
-    const [items,setItems] = useState([]);
-    useEffect(() =>{
+    const [items, setItems] = useState([]);
+    useEffect(() => {
         fetch('http://localhost:5000/item')
-        .then(res => res.json())
-        .then(data => setItems(data));
-    },[]);
+            .then(res => res.json())
+            .then(data => setItems(data));
+    }, []);
 
-    return [items,setItems];
+    return [items, setItems];
 };
 
-export {useItems}
+export { useItems }
