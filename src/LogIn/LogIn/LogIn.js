@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useEffect, useRef } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';

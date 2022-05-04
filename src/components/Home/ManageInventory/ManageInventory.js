@@ -45,7 +45,7 @@ const ManageInventory = () => {
                             </thead>
                             {
                                 items.map(item => (
-                                    <tbody className="flex-1 sm:flex-none">
+                                    <tbody key={item._id} className="flex-1 sm:flex-none">
 
                                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
