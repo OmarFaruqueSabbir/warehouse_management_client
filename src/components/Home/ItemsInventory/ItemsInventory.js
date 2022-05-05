@@ -6,8 +6,9 @@ import ItemInventory from '../ItemInventory/ItemInventory';
 const ItemsInventory = () => {
     const [items] = useItems([])
     return (
+        // mt-2 
         <div className=''>
-            <h2 style={{ fontFamily: "poppins" }} className='text-3xl text-indigo-700 font-bold mt-10 pt-5'>Inventory Items</h2>
+            <h2 style={{ fontFamily: "poppins" }} className='text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl mt-10 pt-5'>Inventory Items</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center'>
                 {
                     items?.slice(0, 6).map((item) => (

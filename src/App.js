@@ -9,6 +9,7 @@ import Register from './LogIn/Register/Register';
 import AddItems from './components/AddItems/AddItems';
 import MyItems from './components/MyItems/MyItems';
 import RequireAuth from './LogIn/RequireAuth/RequireAuth';
+import WareHouse from './components/Home/WareHouse/WareHouse';
 
 function App() {
   return (

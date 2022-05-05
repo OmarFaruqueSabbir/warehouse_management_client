@@ -22,7 +22,7 @@ const ManageInventory = () => {
     }
     return (
         <div>
-            <h3 className='text-3xl mt-5 mb-5'>All Inventory Items</h3>
+            <h3 className='text-3xl leading-8 font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mt-5 mb-5'>All Inventory Items</h3>
             <div>
                 <section className="md:w-62  container mx-auto mt-8">
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -43,11 +43,12 @@ const ManageInventory = () => {
                                     </th>
                                 </tr>
                             </thead>
+                            <tbody  className="flex-1 sm:flex-none">
                             {
                                 items.map(item => (
-                                    <tbody key={item._id} className="flex-1 sm:flex-none">
+                                    
 
-                                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                                 {item._id}
                                             </td>
@@ -62,9 +63,10 @@ const ManageInventory = () => {
                                             </td>
                                         </tr>
 
-                                    </tbody>)
-                                )
+                                    
+                                ))
                             }
+                            </tbody>
                         </table>
                     </div>
                 </section>
