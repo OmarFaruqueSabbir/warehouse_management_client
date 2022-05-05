@@ -10,6 +10,7 @@ import AddItems from './components/AddItems/AddItems';
 import MyItems from './components/MyItems/MyItems';
 import RequireAuth from './LogIn/RequireAuth/RequireAuth';
 import WareHouse from './components/Home/WareHouse/WareHouse';
+import Footer from './components/shared/Footer/Footer';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/addItems' element={<AddItems />} />
         <Route path='/myItems' element={<MyItems />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
