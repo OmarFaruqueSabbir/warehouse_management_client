@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ItemInventory = ({ item }) => {
-    const { _id, name, price, supplier, img, description } = item;
+    const { _id, name, price, supplier, img, description, quantity } = item;
     const navigate = useNavigate();
     const handleItemDetail = id => {
         navigate(`/item/${id}`)
@@ -24,9 +24,10 @@ const ItemInventory = ({ item }) => {
                         {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY: Microwave Oven</h3> */}
                         <p className="text-sm text-orange-500 text-justify font-medium"> <strong>Model : </strong>{name}</p>
                         <p className="text-gray-900 text-sm text-justify font-medium"> <strong>Specs: </strong>{description}</p>
-                        <p className="mt-1 text-sm text-left underline-offset-1">Supplier: {supplier}</p>
+                        <p className="mt-1 text-sm text-left underline-offset-1 font-medium"><strong>Supplier: </strong>{supplier}</p>
+                        <p className="mt-1 text-sm text-left underline-offset-1"><strong>Quantity: </strong> {quantity}</p>
                         <p className="mt-1 text-base"> <strong>Price : </strong>{price}$</p>
-                        <button onClick={() => handleItemDetail(_id)} className="flex mx-auto mt-5 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">stock update</button>
+                        <button onClick={() => handleItemDetail(_id)} className="flex mx-auto mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">stock update</button>
                     </div>
                 </div>
             </div>
