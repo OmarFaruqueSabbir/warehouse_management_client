@@ -39,24 +39,22 @@ const Navbar = () => {
                 HOME
               </CustomLink>
               {
-                user ?
+                user &&
+                <>
                   <CustomLink
                   to='/manageInventory'
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   MANAGE INVENTORY
                 </CustomLink>
-                :
-                <div></div>
-              }
-
               <CustomLink
-                to='/myItems'
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                MY ITEMS
-              </CustomLink>
-
+              to='/myItems'
+              className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              MY ITEMS
+            </CustomLink>
+            </>
+              }
               <CustomLink
                 to='/team'
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -151,24 +149,29 @@ const Navbar = () => {
               </CustomLink>
 
               {
-                user ?
+                user &&
+                <>
                   <CustomLink
                   to='/manageInventory'
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   MANAGE INVENTORY
                 </CustomLink>
-                :
-                <div></div>
+              <CustomLink
+              to='/myItems'
+              className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              MY ITEMS
+            </CustomLink>
+            </>
               }
 
               <CustomLink
-                to="/myItems"
+                to='/team'
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
-                MY ITEMS
+                TEAM
               </CustomLink>
-
               <CustomLink
                 to='/blogs'
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
