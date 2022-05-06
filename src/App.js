@@ -13,6 +13,7 @@ import WareHouse from './components/Home/WareHouse/WareHouse';
 import Footer from './components/shared/Footer/Footer';
 import Blogs from './components/Blogs/Blogs';
 import Team from './components/Team/Team';
+import ErrorPage from './components/shared/ErrorPage/ErrorPage';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='/myItems' element={<MyItems />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/team' element={<Team />} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>
