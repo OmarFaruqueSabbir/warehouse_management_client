@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../../components/shared/Loading/Loading';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -17,7 +18,7 @@ const LogIn = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(
+    const [sendPasswordResetEmail, loading1] = useSendPasswordResetEmail(
         auth);
 
     const navigate = useNavigate();
@@ -25,6 +26,10 @@ const LogIn = () => {
     const from = location.state?.from?.pathname || "/";
     const gotoRegister = () => {
         navigate('/register');
+    }
+
+    if (loading || loading1) {
+        return <Loading />
     }
 
     let errorMessage;
