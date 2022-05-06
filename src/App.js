@@ -11,6 +11,7 @@ import MyItems from './components/MyItems/MyItems';
 import RequireAuth from './LogIn/RequireAuth/RequireAuth';
 import WareHouse from './components/Home/WareHouse/WareHouse';
 import Footer from './components/shared/Footer/Footer';
+import Blogs from './components/Blogs/Blogs';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/addItems' element={<AddItems />} />
         <Route path='/myItems' element={<MyItems />} />
+        <Route path='/blogs' element={<Blogs />} />
       </Routes>
       <Footer />
     </div>
