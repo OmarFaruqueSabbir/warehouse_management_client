@@ -27,7 +27,7 @@ const ErrorPage = () => {
                             stroke="currentColor"
                             className="flex-shrink-0 w-4 h-4 ml-3"
                         >
-                            <path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                     </button>
                 </Link>

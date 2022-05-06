@@ -22,7 +22,7 @@ const WareHouse = () => {
                         <h2 className="text-xl font-medium title-font text-gray-900 mt-5">Halishar Block, Chattogram</h2>
                         <p className="text-base text-justify leading-relaxed mt-2">Our very first warehouse was founded here in halisahar in Chattogram metro. Here, we started our journey to import & stock quality electronic products.</p>
                         <p className="text-indigo-500 inline-flex items-center mt-3">Explore More
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
                         </p>
@@ -34,7 +34,7 @@ const WareHouse = () => {
                         <h2 className="text-xl font-medium title-font text-gray-900 mt-5">Bahaddarhat Block, Chattogram</h2>
                         <p className="text-base text-justify leading-relaxed mt-2">Due to demands on local market, we had to stock larger amount products. Here is the Bahaddarhat block warehouse with more spaces & facilities.</p>
                         <p className="text-indigo-500 inline-flex items-center mt-3">Explore More
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
                         </p>
@@ -46,7 +46,7 @@ const WareHouse = () => {
                         <h2 className="text-xl font-medium title-font text-gray-900 mt-5">Uttara Block, Dhaka</h2>
                         <p className="text-base text-justify leading-relaxed mt-2">Here is our third warehouse in Uttara, Dhaka. It has well spaces with more  modern warehouse setups & facilities.</p>
                         <p className="text-indigo-500 inline-flex items-center mt-3">Explore More
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
                         </p>

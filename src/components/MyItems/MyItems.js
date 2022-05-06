@@ -10,7 +10,7 @@ const MyItems = () => {
 
     useEffect(() => {
         const email = user?.email
-        const url = ` http://localhost:5000/item?email=${email}`;
+        const url = ` https://tranquil-spire-49472.herokuapp.com/item?email=${email}`;
         fetch(url, {
             headers: {
                 authorization: `${localStorage.getItem('accessToken')}`
@@ -23,7 +23,7 @@ const MyItems = () => {
     const deleteItem = id => {
         const agree = window.confirm('Want to delete Items?');
         if (agree) {
-            const url = `http://localhost:5000/item/${id}`
+            const url = `https://tranquil-spire-49472.herokuapp.com/item/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

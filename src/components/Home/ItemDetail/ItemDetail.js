@@ -6,7 +6,7 @@ const ItemDetail = () => {
     const [item, setItem] = useState({});
 
     useEffect( () =>{
-        const url = `http://localhost:5000/item/${itemId}`;
+        const url = `https://tranquil-spire-49472.herokuapp.com/item/${itemId}`;
         console.log(url);
         fetch(url)
         .then(res=> res.json())
@@ -21,7 +21,7 @@ const ItemDetail = () => {
         const updatedQuantity = { quantity }
 
         // send update data to the server..
-        const url = `http://localhost:5000/item/${itemId}`
+        const url = `https://tranquil-spire-49472.herokuapp.com/item/${itemId}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -43,7 +43,7 @@ const ItemDetail = () => {
         const updatedQuantity = { quantity }
 
         // send update data to the server..
-        const url = `http://localhost:5000/item/${itemId}`
+        const url = `https://tranquil-spire-49472.herokuapp.com/item/${itemId}`
         fetch(url, {
             method: 'PUT',
             headers: {

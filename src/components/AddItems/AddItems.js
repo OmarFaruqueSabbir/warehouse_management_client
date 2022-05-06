@@ -8,7 +8,7 @@ const AddItems = (event) => {
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
-        const url = `http://localhost:5000/item`
+        const url = `https://tranquil-spire-49472.herokuapp.com/item`
         fetch(url, {
             method: 'POST',
             headers: {
