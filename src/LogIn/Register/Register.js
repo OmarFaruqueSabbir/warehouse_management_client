@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../../components/shared/Loading/Loading';
 import auth from '../../firebase.init';
 
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -19,11 +20,13 @@ const Register = () => {
         navigate('/login');
     }
 
-    useEffect(() => {
-        if (user) {
-            navigate(from);
+    if (loading ) {
+        return <Loading />
+    }
+
+    if (user) {
+        navigate(from, { replace: true });
         }
-    }, [user]);
 
     const handleRegister = (event) => {
         event.preventDefault();
