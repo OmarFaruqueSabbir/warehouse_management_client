@@ -40,6 +40,10 @@ const LogIn = () => {
             </p>
     }
 
+    if (user) {
+        navigate(from, { replace: true });
+        }
+
     const handleLogIn = async event => {
         event.preventDefault();
         const email = emailRef.current.value;
@@ -49,9 +53,6 @@ const LogIn = () => {
 
        const {data} = await axios.post('https://tranquil-spire-49472.herokuapp.com/login',{email})
        localStorage.setItem('accessToken',data.accessToken);
-
-       navigate(from,{replace:true})
-
     }
 
     const resetPassword = async () => {
