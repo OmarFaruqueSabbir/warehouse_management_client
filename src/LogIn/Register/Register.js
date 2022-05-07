@@ -37,11 +37,11 @@ const Register = () => {
         <div>
             <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                 <div className="max-w-lg mx-auto">
-                    <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">Please Register Here</h1>
+                    <h1 className="text-2xl font-bold text-center text-gray-700 sm:text-3xl">Please Register Here</h1>
 
                     <form onSubmit={handleRegister} action="" className="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
                         <div>
-                            <label for="email" className="text-sm font-medium">Email</label>
+                            <label htmlFor="email" className="text-sm font-medium">Email</label>
 
                             <div className="relative mt-1">
                                 <input
@@ -71,7 +71,7 @@ const Register = () => {
                         </div>
 
                         <div>
-                            <label for="password" className="text-sm font-medium">Password</label>
+                            <label htmlFor="password" className="text-sm font-medium">Password</label>
 
                             <div className="relative mt-1">
                                 <input
@@ -106,7 +106,7 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <button type="submit" className="block text-base w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg">
+                        <button type="submit" className="block text-base w-full px-5 py-3 font-medium text-white bg-gray-700 rounded-lg">
                             Sign in
                         </button>
 
