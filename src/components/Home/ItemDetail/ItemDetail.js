@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ItemDetail = () => {
     const { itemId } = useParams();
@@ -13,29 +15,6 @@ const ItemDetail = () => {
         .then(data => setItem(data));
         
     }, [item]);
-
-    const handleIncrement = event => {
-        event.preventDefault();
-        const quantity = parseFloat(item.quantity) + parseFloat(event.target.item.value);
-
-        const updatedQuantity = { quantity }
-
-        // send update data to the server..
-        const url = `https://tranquil-spire-49472.herokuapp.com/item/${itemId}`
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedQuantity)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('success', data);
-                alert('quantity added!');
-                event.target.reset();
-            })
-    }
 
     const handleDecrement = () => {
         const quantity = parseFloat(item.quantity) -1;
@@ -54,28 +33,62 @@ const ItemDetail = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data);
-                alert('Item Delivered!');
+                toast('Item Delivered!');
             })
+    }
+
+    const handleIncrement = event => {
+        event.preventDefault();
+        // const quantity = parseFloat(item.quantity) + parseFloat(event.target.item.value);
+
+        if(event.target.item.value > 0 ){
+            const quantity = parseFloat(item.quantity) + parseFloat(event.target.item.value);
+            
+            const updatedQuantity = { quantity }
+                    // send update data to the server..
+        const url = `https://tranquil-spire-49472.herokuapp.com/item/${itemId}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedQuantity)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data);
+                toast('quantity added!');
+                event.target.reset();
+            })
+        }else if(event.target.item.value === ""){
+            alert('invalid')
+            event.target.reset();
+        }
+
     }
 
 
 
     return (
         <div className='text-center'>
-            <div className="flex max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 mt-10">
-                <div className="w-1/3 bg-cover" >
+            <div className="flex max-w-lg  mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 mt-10">
+                <div className="w-1/3 pt-5 bg-cover" >
                     <img src={item.img} alt="" />
                 </div>
 
                 <div className="w-2/3 p-4 md:p-4">
                     <h1 className="text-2xl font-bold text-gray-800 dark:text-white">{item.name}</h1>
 
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
+                    <p className="mt-2 text-sm text-justify text-gray-600 dark:text-gray-400">{item.description}</p>
 
-                    <h1 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{item.quantity} items available</h1>
+                    {
+                        item.quantity === 0?
+                        <h1 className="text-lg font-bold  text-gray-700 dark:text-gray-200 md:text-xl"> SOLD </h1> :
+                        <h1 className="text-lg font-bold  text-gray-700 dark:text-gray-200 md:text-xl">{item.quantity} items available</h1>
+                    }
 
                     <div className="flex justify-between mt-3 item-center">
-                        <h1 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{item.price}$</h1>
+                        <h1 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">Price: {item.price}$</h1>
                         <button onClick={handleDecrement} className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Delivered</button>
                     </div>
                 </div>
@@ -94,7 +107,7 @@ const ItemDetail = () => {
                 <div className="flex items-center justify-center pb-6 md:py-0 md:w-1/2">
                     <form onSubmit={handleIncrement}>
                         <div className="flex flex-col p-1 overflow-hidden border rounded-lg dark:border-gray-600 lg:flex-row dark:focus-within:border-blue-300 focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
-                            <input className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none dark:bg-gray-800 dark:placeholder-gray-400 focus:placeholder-transparent dark:focus:placeholder-transparent" type="number" name="item" placeholder="Input" aria-label="Input quantity" />
+                            <input className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none dark:bg-gray-800 dark:placeholder-gray-400 focus:placeholder-transparent dark:focus:placeholder-transparent" type="number"  name="item" placeholder="Input" aria-label="Input quantity" />
 
                             <button className="px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-200 transform bg-gray-700 rounded-lg hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">submit</button>
                         </div>
@@ -112,6 +125,7 @@ const ItemDetail = () => {
                         Manage Inventories
                     </button>
                 </Link>
+                <ToastContainer />
             </div>
 
         </div>

@@ -6,8 +6,6 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const [items, setItems] = useState([])
     
-
-
     useEffect(() => {
         const email = user?.email
         const url = ` https://tranquil-spire-49472.herokuapp.com/item?email=${email}`;
@@ -37,6 +35,7 @@ const MyItems = () => {
     }
     return (
         <div className='w-50 mx-auto mt-8'>
+            <p className='text-3xl leading-8 font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-5'>My Items</p>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 {
                     items.length > 0 ?

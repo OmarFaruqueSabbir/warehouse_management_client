@@ -59,11 +59,10 @@ const ManageInventory = () => {
                                                 <img src={item.img} alt="" />
                                             </td>
                                             <td onClick={() => deleteItem(item._id)} className="px-6 py-4 text-right">
-                                                <p href="#" className="font-medium text-red-500 dark:text-red-600 hover:underline">Delete</p>
+                                                <button  className="font-medium text-red-500 dark:text-red-600 hover:underline">Delete</button>
                                             </td>
                                         </tr>
 
-                                    
                                 ))
                             }
                             </tbody>

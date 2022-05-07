@@ -4,10 +4,10 @@ const Team = () => {
     return (
         <>
             <section className="text-gray-600 body-font">
-                <div className="container px-5 py-24 mx-auto">
+                <div className="container px-5 py-10 mx-auto">
                     <div className="flex flex-col text-center w-full mb-20">
-                        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Our Team</h1>
-                        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Here are the talented & most energetic professionals in our Team. We are dedicated in providing beast outputs & services to our clients. </p>
+                        <h1 className="text-3xl leading-8 font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-5">Our Team</h1>
+                        <p className="lg:w-2/3 text- mx-auto leading-relaxed text-lg">Here are the talented & most energetic professionals in our Team. We are dedicated in providing beast outputs & services to our clients. </p>
                     </div>
                     <div className="flex flex-wrap -m-2">
                         <div className="p-2 lg:w-1/3 md:w-1/2 w-full">

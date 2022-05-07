@@ -28,7 +28,7 @@ const LogIn = () => {
         navigate('/register');
     }
 
-    if (loading || loading1) {
+    if (loading) {
         return <Loading />
     }
 
@@ -69,13 +69,13 @@ const LogIn = () => {
 
             <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                 <div className="max-w-lg mx-auto">
-                    <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">Welcome, Log In Here...   </h1>
+                    <h1 className="text-2xl font-bold text-center text-gray-700 sm:text-3xl">Welcome, Log In Here...   </h1>
 
                     <form onSubmit={handleLogIn} action="" className="p-2 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
-                        <p className="text-lg text-indigo-600 font-medium">Login in to your account</p>
+                        {/* <p className="text-lg text-gray-700 font-medium">Login in to your account</p> */}
 
                         <div>
-                            <label for="email" className="text-sm text-left font-medium">Email</label>
+                            <label htmlFor="email" className="text-sm text-left font-medium">Email</label>
 
                             <div className="relative mt-1">
                                 <input ref={emailRef}
@@ -106,7 +106,7 @@ const LogIn = () => {
                         </div>
 
                         <div>
-                            <label for="password" className="text-sm font-medium">Password</label>
+                            <label htmlFor="password" className="text-sm font-medium">Password</label>
 
                             <div className="relative mt-1">
                                 <input ref={passRef}
@@ -142,17 +142,17 @@ const LogIn = () => {
                             </div>
                         </div>
 
-                        <button type="submit" className="block text-base w-full px-5 py-3  font-medium text-white bg-indigo-600 rounded-lg">
+                        <button type="submit" className="block text-base w-full px-5 py-3  font-medium text-white bg-gray-700 rounded-lg">
                             Sign in
                         </button>
 
 
-                        <p className="text-gray-400 hover:text-blue-500" >New Here? <span onClick={gotoRegister} className='text-primary pl-2'>
+                        <p className="text-gray-500 hover:text-blue-500" >New Here? <span onClick={gotoRegister} className='text-primary pl-2'>
                             Please Register</span>  </p>
                         {
                             errorMessage
                         }
-                        <p className="text-gray-400 hover:text-blue-500" >Forgot Password? <span onClick={resetPassword} className='text-primary pl-2'>
+                        <p className="text-gray-500 hover:text-blue-500" >Forgot Password? <span onClick={resetPassword} className='text-primary pl-2'>
                             Reset your Password</span>  </p>
                             <ToastContainer />
                         <SocialLogin />

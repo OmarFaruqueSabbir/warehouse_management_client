@@ -1,13 +1,15 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast,ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const AddItems = (event) => {
+const AddItems = () => {
     const {
         register,
         handleSubmit, reset,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = (data,event) => {
         const url = `https://tranquil-spire-49472.herokuapp.com/item`
         fetch(url, {
             method: 'POST',
@@ -19,6 +21,8 @@ const AddItems = (event) => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+                toast("new item added..")
+                event.target.reset()
             })
     };
 
@@ -42,6 +46,7 @@ const AddItems = (event) => {
                         Submit
                     </button>
                 </form>
+                <ToastContainer />
             </div>
         </div >
     );
