@@ -148,7 +148,7 @@ const LogIn = () => {
                         </button>
 
 
-                        <p className="text-gray-500 hover:text-blue-500" >New Here? <span onClick={gotoRegister} className='text-primary pl-2'>
+                        <p className="text-gray-500 hover:text-blue-500" >Are You New Here? <span onClick={gotoRegister} className='text-primary pl-2'>
                             Please Register</span>  </p>
                         {
                             errorMessage
